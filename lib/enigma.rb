@@ -4,9 +4,6 @@ require './lib/decryptor'
 
 class Enigma
 
-  def initialize
-  end
-
   def encrypt(message, key, date)
     @encryption = Encryptor.new(message, key, date).encrypt
   end
