@@ -5,7 +5,7 @@ class Decryptor
   attr_reader :message, :key, :date, :shift, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
 
   def initialize(encrypted_message, key, date = date_setup)
-    @encrypted_message = encrypted_message
+    @encrypted_message = encrypted_message.downcase
     @key = key
     @date = date
     @alphabet = ("a".."z").to_a << " "
