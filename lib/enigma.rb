@@ -1,5 +1,6 @@
 require 'date'
 require './lib/encryptor'
+require './lib/decryptor'
 
 class Enigma
 
@@ -7,7 +8,11 @@ class Enigma
   end
 
   def encrypt(message, key, date)
-    @encrption = Encryptor.new(message, key, date).encrypt
+    @encryption = Encryptor.new(message, key, date).encrypt
+  end
+
+  def decrypt(message, key, date)
+    @decryption = Decryptor.new(message, key, date).decrypt
   end
 
 
