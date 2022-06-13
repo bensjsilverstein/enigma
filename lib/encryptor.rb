@@ -4,10 +4,10 @@ class Encryptor
   include Shiftable
   attr_reader :message, :key, :date, :shift, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
 
-  def initialize(message, key = key_generator, date = date_to_number)
+  def initialize(message, key = key_generator, date = date_setup)
     @message = message
     @key = key
-    @date = date.to_i
+    @date = date
     @alphabet = ("a".."z").to_a << " "
     @a_shift = a_shift
     @b_shift = b_shift
@@ -20,13 +20,12 @@ class Encryptor
     ('%05d' % rand(10 ** 4))
   end
 
-  def date_to_number
-    @date = (Time.now).strftime("%d%m%y").to_i
-    require "pry"; binding.pry
+  def date_setup
+    @date = (Time.now).strftime("%d%m%y")
   end
 
   def shift_calculator
-    last_four_digits = (@date**2).to_s[-4..-1]
+    last_four_digits = (@date.to_i**2).to_s[-4..-1]
     @a_key = @key[0..1].to_i
     @b_key = @key[1..2].to_i
     @c_key = @key[2..3].to_i

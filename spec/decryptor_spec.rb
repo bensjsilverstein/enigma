@@ -2,21 +2,16 @@ require './lib/decryptor'
 
 RSpec.describe Decryptor do
   before :each do
-    @decryptor = Decryptor.new("hello world", "02715", "040895")
+    @decryptor = Decryptor.new("keder ohulw", "02715", "040895")
   end
 
   it "exists" do
     expect(@decryptor).to be_a Decryptor
   end
 
-  it "can generate a key" do
-    expect(@decryptor.key_generator).to be_a(String)
-    expect(@decryptor.key_generator.length).to eq(5)
-  end
-
   it "can convert a date to an integer" do
-    expect(@decryptor.date_to_number).to be_a(Integer)
-    expect(@decryptor.date_to_number.length).to eq(8)
+    expect(@decryptor.date_setup).to be_a(String)
+    expect(@decryptor.date_setup.size).to eq(6)
   end
 
   it "can calculate shifts" do
@@ -35,14 +30,13 @@ RSpec.describe Decryptor do
 
   it "can encrypt" do
     # require "pry"; binding.pry
-    expect(@decryptor.encrypt).to eq({
-      :encryption => "keder ohulw",
+    expect(@decryptor.decrypt).to eq({
+      :decryption => "hello world",
       :key => "02715",
-      :date => 40895})
+      :date => "040895"})
     end
 
 
 
 
 end
-@decryptor

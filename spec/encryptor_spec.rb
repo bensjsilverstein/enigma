@@ -15,8 +15,8 @@ RSpec.describe Encryptor do
   end
 
   it "can convert a date to an integer" do
-    expect(@encryptor.date_to_number).to be_a(Integer)
-    expect(@encryptor.date_to_number.length).to eq(8)
+    expect(@encryptor.date_setup).to be_a(String)
+    expect(@encryptor.date_setup.size).to eq(6)
   end
 
   it "can calculate shifts" do
@@ -38,8 +38,8 @@ RSpec.describe Encryptor do
     expect(@encryptor.encrypt).to eq({
       :encryption => "keder ohulw",
       :key => "02715",
-      :date => 40895})
-    end
+      :date => "040895"})
+  end
 
 
 
