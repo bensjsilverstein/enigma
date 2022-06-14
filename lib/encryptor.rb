@@ -57,5 +57,21 @@ class Encryptor
     end
     @encrypted_hash = {:encryption => encrypted.join, :key => @key, :date => @date}
   end
+  
+  def decrypt
+    encrypted_array = @encrypted_message.downcase.chars
+    message = encrypted_array.each_with_index.map do |char,i|
+      if i % 4 == 0
+        char = reverse_a[char]
+      elsif i % 4 == 1
+        char = reverse_b[char]
+      elsif i % 4 == 2
+        char = reverse_c[char]
+      elsif i % 4 == 3
+        char = reverse_d[char]
+      end
+    end
+    @encrypted_hash = {:decryption => message.join, :key => @key, :date => @date}
+  end
 
 end
