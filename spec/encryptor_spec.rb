@@ -56,7 +56,7 @@ RSpec.describe Encryptor do
   end
 
   # ====== Rotatables Module tests(below) ======
-  it "has rotated alphabets" do
+  it "has rotated alphabets for encryption" do
     expect(@encryptor.a_rotation).to be_a Hash
     expect(@encryptor.a_rotation.first).to eq(["a", "d"])
     expect(@encryptor.a_rotation.count).to eq(27)
@@ -72,7 +72,24 @@ RSpec.describe Encryptor do
     expect(@encryptor.d_rotation).to be_a Hash
     expect(@encryptor.d_rotation.first).to eq(["a", "u"])
     expect(@encryptor.d_rotation.count).to eq(27)
+  end
 
+  it "has rotated alphabets for decryption" do
+    expect(@encryptor.reverse_a).to be_a Hash
+    expect(@encryptor.reverse_a.first).to eq(["d", "a"])
+    expect(@encryptor.reverse_a.count).to eq(27)
+
+    expect(@encryptor.reverse_b).to be_a Hash
+    expect(@encryptor.reverse_b.first).to eq(["a", "a"])
+    expect(@encryptor.reverse_b.count).to eq(27)
+
+    expect(@encryptor.reverse_c).to be_a Hash
+    expect(@encryptor.reverse_c.first).to eq(["t", "a"])
+    expect(@encryptor.reverse_c.count).to eq(27)
+
+    expect(@encryptor.reverse_d).to be_a Hash
+    expect(@encryptor.reverse_d.first).to eq(["u", "a"])
+    expect(@encryptor.reverse_d.count).to eq(27)
   end
 
 
