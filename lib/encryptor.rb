@@ -1,4 +1,5 @@
-require './lib/shiftable'
+require './lib/shiftables'
+require './lib/rotatables'
 
 class Encryptor
   include Rotatables, Shiftables
@@ -16,30 +17,30 @@ class Encryptor
     @encrypted_hash = {}
   end
 
-  def key_generator
-    ('%05d' % rand(10 ** 4))
-  end
-
-  def date_setup
-    @date = (Time.now).strftime("%d%m%y")
-  end
-
-  def shift_calculator
-    last_four_digits = (@date.to_i**2).to_s[-4..-1]
-    @a_key = @key[0..1].to_i
-    @b_key = @key[1..2].to_i
-    @c_key = @key[2..3].to_i
-    @d_key = @key[3..4].to_i
-    @a_offset = last_four_digits[0].to_i
-    @b_offset = last_four_digits[1].to_i
-    @c_offset = last_four_digits[2].to_i
-    @d_offset = last_four_digits[3].to_i
-
-    @a_shift = @a_key + @a_offset
-    @b_shift = @b_key + @b_offset
-    @c_shift = @c_key + @c_offset
-    @d_shift = @d_key + @d_offset
-  end
+  # def key_generator
+  #   ('%05d' % rand(10 ** 4))
+  # end
+  #
+  # def date_setup
+  #   @date = (Time.now).strftime("%d%m%y")
+  # end
+  #
+  # def shift_calculator
+  #   last_four_digits = (@date.to_i**2).to_s[-4..-1]
+  #   @a_key = @key[0..1].to_i
+  #   @b_key = @key[1..2].to_i
+  #   @c_key = @key[2..3].to_i
+  #   @d_key = @key[3..4].to_i
+  #   @a_offset = last_four_digits[0].to_i
+  #   @b_offset = last_four_digits[1].to_i
+  #   @c_offset = last_four_digits[2].to_i
+  #   @d_offset = last_four_digits[3].to_i
+  #
+  #   @a_shift = @a_key + @a_offset
+  #   @b_shift = @b_key + @b_offset
+  #   @c_shift = @c_key + @c_offset
+  #   @d_shift = @d_key + @d_offset
+  # end
 
 
   def encrypt
@@ -59,7 +60,7 @@ class Encryptor
   end
 
   def decrypt
-    encrypted_array = @encrypted_message.downcase.chars
+    encrypted_array = @message.downcase.chars
     message = encrypted_array.each_with_index.map do |char,i|
       if i % 4 == 0
         char = reverse_a[char]

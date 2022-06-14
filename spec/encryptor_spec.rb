@@ -3,6 +3,7 @@ require './lib/encryptor'
 RSpec.describe Encryptor do
   before :each do
     @encryptor = Encryptor.new("hello world", "02715", "040895")
+    @decryptor = Encryptor.new("keder ohulw", "02715", "040895")
   end
 
   it "exists" do
@@ -41,7 +42,12 @@ RSpec.describe Encryptor do
       :date => "040895"})
   end
 
-
-
+  it "can decrypt" do
+    # require "pry"; binding.pry
+    expect(@decryptor.decrypt).to eq({
+      :decryption => "hello world",
+      :key => "02715",
+      :date => "040895"})
+  end
 
 end

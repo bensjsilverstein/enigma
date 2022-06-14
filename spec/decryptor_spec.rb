@@ -28,13 +28,13 @@ RSpec.describe Decryptor do
     expect(@decryptor.key.length).to eq 5
   end
 
-  it "can encrypt" do
+  it "can decrypt" do
     # require "pry"; binding.pry
     expect(@decryptor.decrypt).to eq({
       :decryption => "hello world",
       :key => "02715",
       :date => "040895"})
-    end
+  end
 
 
 

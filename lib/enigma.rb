@@ -10,7 +10,7 @@ class Enigma
   end
 
   def decrypt(message, key = key_generator, date = date_setup)
-    @decryption = Decryptor.new(message, key, date).decrypt
+    @decryption = Encryptor.new(message, key, date).decrypt
   end
 
   def date_setup

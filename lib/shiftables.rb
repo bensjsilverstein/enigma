@@ -1,4 +1,4 @@
-class Shiftables
+module Shiftables
 
   def key_generator
     ('%05d' % rand(10 ** 4))
