@@ -1,4 +1,4 @@
-# Enigma_final
+# Enigma
 
 This file contains the 'Enigma' final project for Ben Silverstein
 
