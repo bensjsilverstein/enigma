@@ -40,6 +40,22 @@ RSpec.describe Encryptor do
       :key => "02715",
       :date => "040895"})
   end
+
+  it "can encrypt a message without being given a key or date" do
+    encryption = Encryptor.new("hello world")
+    expect(encryption.encrypt).to be_a Hash
+    expect(encryption.encrypt[:date]).to eq("140622")
+    expect(encryption.encrypt[:encryption]).to be_a(String)
+    expect(encryption.encrypt[:key].length).to eq(5)
+  end
+
+  it "can decrypt a message without being given a date(today's date)" do
+    decryption = Encryptor.new("hello world", "12345")
+    expect(decryption.decrypt).to be_a Hash
+    expect(decryption.decrypt[:date]).to eq("140622")
+    expect(decryption.decrypt[:encryption]).to be_a(String)
+    expect(decryption.decrypt[:key].length).to eq(5)
+  end
   # ====== Shiftables Module tests(below) ======
   it "can generate a key" do
     expect(@encryptor.key_generator).to be_a(String)
