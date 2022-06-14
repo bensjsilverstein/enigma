@@ -2,22 +2,22 @@ module Rotatables
 
   def a_rotation
     shift_calculator
-    @a_alpha_hash = Hash[@alphabet.zip(@alphabet.rotate(@a_shift))]
+    Hash[@alphabet.zip(@alphabet.rotate(@a_shift))]
   end
 
   def b_rotation
     shift_calculator
-    @b_alpha_hash = Hash[@alphabet.zip(@alphabet.rotate(@b_shift))]
+    Hash[@alphabet.zip(@alphabet.rotate(@b_shift))]
   end
 
   def c_rotation
     shift_calculator
-    @c_alpha_hash = Hash[@alphabet.zip(@alphabet.rotate(@c_shift))]
+    Hash[@alphabet.zip(@alphabet.rotate(@c_shift))]
   end
 
   def d_rotation
     shift_calculator
-    @d_alpha_hash = Hash[@alphabet.zip(@alphabet.rotate(@d_shift))]
+    Hash[@alphabet.zip(@alphabet.rotate(@d_shift))]
   end
 
   def reverse_a
