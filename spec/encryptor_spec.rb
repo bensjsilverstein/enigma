@@ -64,13 +64,21 @@ RSpec.describe Encryptor do
     expect(@encryptor.key_generator.length).to eq(5)
   end
 
-  it "can convert a date to an integer" do
+  it "can convert a date to a string" do
     expect(@encryptor.date_setup).to be_a(String)
     expect(@encryptor.date_setup.size).to eq(6)
   end
 
+  it "can calculate a key" do
+    expect(@encryptor.key_calculator).to be_a(Integer)
+  end
+
+  it "can calculate an offset" do
+    expect(@encryptor.offset_calculator).to be_a(Integer)
+  end
+
   it "can calculate shifts" do
-    expect(@encryptor.shift_calculator).to be_a Integer
+    expect(@encryptor.shift_calculator).to be_a(Integer)
   end
 
   # ====== Rotatables Module tests(below) ======
