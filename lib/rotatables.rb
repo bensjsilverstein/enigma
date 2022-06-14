@@ -35,5 +35,4 @@ module Rotatables
   def reverse_d
     d_rotation.invert
   end
-
 end
