@@ -23,7 +23,7 @@ RSpec.describe Enigma do
       date: "040895"})
   end
 
-  it "can encrypt a message without being given" do
+  it "can encrypt a message without being given a date" do
     encryption = @enigma1.encrypt("hello world", "02715")
     expect(encryption).to be_a(Hash)
     expect(encryption[:key]).to eq("02715")

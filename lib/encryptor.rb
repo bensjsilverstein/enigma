@@ -3,18 +3,15 @@ require './lib/rotatables'
 
 class Encryptor
   include Rotatables, Shiftables
-  attr_reader :message, :key, :date, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
+  attr_reader :message, :key, :date, :alphabet
 
   def initialize(message, key = key_generator, date = date_setup)
     @message = message.downcase
     @key = key
     @date = date
     @alphabet = ("a".."z").to_a << " "
-    @a_shift = a_shift
-    @b_shift = b_shift
-    @c_shift = c_shift
-    @d_shift = d_shift
     @encrypted_hash = {}
+    @decrypted_hash = {}
   end
 
   # def key_generator
@@ -72,7 +69,7 @@ class Encryptor
         char = reverse_d[char]
       end
     end
-    @encrypted_hash = {:decryption => message.join, :key => @key, :date => @date}
+    @decrypted_hash = {:decryption => message.join, :key => @key, :date => @date}
   end
 
 end
