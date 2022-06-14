@@ -1,4 +1,4 @@
-module Shiftable
+module Rotatables
 
   def a_rotation
     shift_calculator
@@ -31,7 +31,7 @@ module Shiftable
   def reverse_c
     @c_decrypt_hash = c_rotation.invert
   end
-  
+
   def reverse_d
     @d_decrypt_hash = d_rotation.invert
   end

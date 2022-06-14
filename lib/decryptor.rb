@@ -1,7 +1,7 @@
 require './lib/shiftable'
 
 class Decryptor
-  include Shiftable
+  include Rotatables, Shiftables
   attr_reader :message, :key, :date, :shift, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
 
   def initialize(encrypted_message, key, date = date_setup)

@@ -1,8 +1,8 @@
 require './lib/shiftable'
 
 class Encryptor
-  include Shiftable
-  attr_reader :message, :key, :date, :shift, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
+  include Rotatables, Shiftables
+  attr_reader :message, :key, :date, :alphabet, :a_shift, :b_shift, :c_shift, :d_shift
 
   def initialize(message, key = key_generator, date = date_setup)
     @message = message.downcase
@@ -57,7 +57,7 @@ class Encryptor
     end
     @encrypted_hash = {:encryption => encrypted.join, :key => @key, :date => @date}
   end
-  
+
   def decrypt
     encrypted_array = @encrypted_message.downcase.chars
     message = encrypted_array.each_with_index.map do |char,i|

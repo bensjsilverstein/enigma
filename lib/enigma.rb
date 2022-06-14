@@ -3,6 +3,7 @@ require './lib/encryptor'
 require './lib/decryptor'
 
 class Enigma
+  include Rotatables, Shiftables
 
   def encrypt(message, key = key_generator, date = date_setup)
     @encryption = Encryptor.new(message, key, date).encrypt
