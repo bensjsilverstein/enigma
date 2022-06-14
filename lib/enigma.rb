@@ -1,12 +1,11 @@
 require 'date'
 require './lib/encryptor'
-require './lib/decryptor'
 
 class Enigma
   include Rotatables, Shiftables
 
   def initialize
-    
+
   end
 
   def encrypt(message, key = key_generator, date = date_setup)
