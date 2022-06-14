@@ -1,9 +1,8 @@
 require_relative './enigma'
+message, encrypted_file = ARGV
 enigma = Enigma.new
-input = ARGV[0]
-output = ARGV[1]
-encryption = enigma.encrypt(File.read(input).tr("\n", ""), "02715", "040895")
-File.open(output, "w") do |file|
-  file.write encryption[:encryption]
-  puts "create #{output} with the key #{encryption[:key]} and date #{encryption[:date]}"
-end
+message_text = open(message, "r") { |file| file.read }
+result = enigma.encrypt(message_text)
+encrypter = open(encrypted_file, "w")
+encrypter.write(result[:encryption])
+puts "Created '#{encrypted_file}' with the key #{result[:key]} date #{result[:date]}""
